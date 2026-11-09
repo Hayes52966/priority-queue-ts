@@ -45,3 +45,10 @@ Pushing a value that is already in the queue throws. There is no silent overwrit
 - `toArray()` — all values in heap order (not sorted; useful for debugging).
 
 Lower numbers mean higher priority. When priorities are equal, the order is unspecified.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
